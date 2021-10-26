@@ -1,13 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
 import 'package:loginyou/pages/home.dart';
 import 'package:loginyou/pages/loginPage.dart';
 import 'package:provider/provider.dart';
+import 'package:loginyou/pages/user_model.dart';
 
 class Wrapper extends StatelessWidget {
-  const Wrapper({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context);

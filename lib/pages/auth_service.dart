@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart' as auth;
-import 'package:flutter_auth_example/models/user_model.dart';
+import 'package:loginyou/pages/user_model.dart';
 
 class AuthService {
   final auth.FirebaseAuth _firebaseAuth = auth.FirebaseAuth.instance;
 
-  auth.User? _userFromFirebase(auth.User? user) {
+  User? _userFromFirebase(auth.User? user) {
     if (user == null) {
       return null;
     }
