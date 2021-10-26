@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "967288585500",
+    "firebase_url": "https://loginyou-sp-default-rtdb.firebaseio.com",
+    "project_id": "loginyou-sp",
+    "storage_bucket": "loginyou-sp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967288585500:android:89b8a0baed036a64e9ced9",
+        "android_client_info": {
+          "package_name": "lincoln.flutter.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967288585500-uvhu181lon792q1ppknt2b9bomo0eu39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5KBS8dqxu69yW8W7pFWGF2SFgmIjk8-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967288585500-uvhu181lon792q1ppknt2b9bomo0eu39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
