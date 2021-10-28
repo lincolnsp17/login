@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
-import 'package:loginyou/pages/home.dart';
+import 'package:loginyou/pages/home_screen.dart';
+import 'package:loginyou/pages/register_user.dart';
 import 'package:loginyou/pages/wrapper.dart';
 import 'package:provider/provider.dart';
 
@@ -20,10 +21,15 @@ class MyApp extends StatelessWidget {
           create: (_) => AuthService(),
         ),
       ],
-      child: MaterialApp(title: 'Login teste', initialRoute: '/', routes: {
-        '/': (context) => Wrapper(),
-        '/login': (context) => HomePage(),
-      }),
+      child: MaterialApp(
+        title: 'Login teste',
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Wrapper(),
+          '/login': (context) => HomePage(),
+          '/register': (context) => RegisterPage(),
+        },
+      ),
     );
   }
 }

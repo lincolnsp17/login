@@ -1,25 +1,16 @@
-// ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
-import 'package:loginyou/pages/home_screen.dart';
-import 'package:loginyou/pages/resetPassword.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-
     final authService = Provider.of<AuthService>(context);
+
     return Scaffold(
       backgroundColor: Colors.deepPurple,
       body: SingleChildScrollView(
@@ -32,7 +23,15 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
               ),
               Image.asset("images/muscle.png", width: 300, height: 200),
-              TextField(
+              TextFormField(
+                validator: (value) {
+                  RegExp regex = new RegExp(
+                      '/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})/i');
+                  if (value!.isEmpty) {
+                    return ('Coloque seu e-mail');
+                  }
+                  ;
+                },
                 controller: emailController,
                 autofocus: true,
                 keyboardType: TextInputType.emailAddress,
@@ -44,7 +43,13 @@ class _LoginPageState extends State<LoginPage> {
                     labelStyle: TextStyle(color: Colors.white)),
               ),
               Divider(),
-              TextField(
+              TextFormField(
+                validator: (value) {
+                  RegExp regex = new RegExp(r'^.{6,}$');
+                  if (value!.isEmpty) {
+                    return ('"preencha a senha');
+                  }
+                },
                 controller: passwordController,
                 autofocus: true,
                 obscureText: true,
@@ -56,45 +61,16 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: ('******'),
                     labelStyle: TextStyle(color: Colors.white)),
               ),
-              Container(
-                height: 40,
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  child: Text(
-                    "Recuperar Senha",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(fontSize: 13, color: Colors.white),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PasswordPage(),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Divider(
-                height: 100,
-              ),
               ElevatedButton(
-                onPressed: () {
-                  authService.signInWithEmailAndPassword(
+                onPressed: () async {
+                  /*if(){}*/
+                  await authService.createUserWithEmailAndPassword(
                     emailController.text,
                     passwordController.text,
                   );
+                  Navigator.pop(context);
                 },
-                child: Text('Entrar'),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-                child: Text('Registrar'),
+                child: Text('Cadastrar'),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.red),
                 ),
