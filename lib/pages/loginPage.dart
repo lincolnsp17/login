@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
         child: Center(
@@ -30,23 +30,35 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               Divider(
                 height: 50,
+                color: Colors.transparent,
               ),
-              Image.asset("images/muscle.png", width: 300, height: 200),
+              Card(
+                color: Colors.grey,
+                child: Image.asset("images/logohiper.png",
+                    width: 300, height: 200),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(10),
+                        topRight: Radius.circular(10)),
+                    side: BorderSide(width: 5, color: Colors.green)),
+              ),
               TextField(
                 controller: emailController,
-                autofocus: true,
+                //autofocus: true,
                 keyboardType: TextInputType.emailAddress,
                 style: TextStyle(color: Colors.white, fontSize: 16),
                 decoration: InputDecoration(
                     labelText: "Email:",
                     prefixIcon: Icon(Icons.email),
                     hintText: ('usuario@contato.com.br'),
-                    labelStyle: TextStyle(color: Colors.white)),
+                    labelStyle: TextStyle(color: Colors.black)),
               ),
-              Divider(),
+              Divider(
+                color: Colors.transparent,
+              ),
               TextField(
                 controller: passwordController,
-                autofocus: true,
                 obscureText: true,
                 keyboardType: TextInputType.emailAddress,
                 style: TextStyle(color: Colors.white, fontSize: 16),
@@ -54,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                     labelText: "Senha:",
                     prefixIcon: Icon(Icons.shield),
                     hintText: ('******'),
-                    labelStyle: TextStyle(color: Colors.white)),
+                    labelStyle: TextStyle(color: Colors.black)),
               ),
               Container(
                 height: 40,
