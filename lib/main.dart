@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
 import 'package:loginyou/pages/home_screen.dart';
 import 'package:loginyou/pages/register_user.dart';
+import 'package:loginyou/pages/ruler.dart';
 import 'package:loginyou/pages/wrapper.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(Teste());
 }
 
 class MyApp extends StatelessWidget {
