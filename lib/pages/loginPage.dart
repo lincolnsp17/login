@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               Divider(
                 color: Colors.transparent,
               ),
-              TextField(
+              TextFormField(
                 controller: passwordController,
                 obscureText: true,
                 keyboardType: TextInputType.emailAddress,
@@ -67,6 +67,12 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: Icon(Icons.shield),
                     hintText: ('******'),
                     labelStyle: TextStyle(color: Colors.black)),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "* Required";
+                  } else
+                    return null;
+                },
               ),
               Container(
                 height: 40,

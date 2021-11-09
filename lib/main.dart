@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         title: 'Login teste',
         initialRoute: '/',
         routes: {
-          '/': (context) => Wrapper(),
+          '/': (context) => RegisterPage(),
           '/login': (context) => HomePage(),
           '/register': (context) => RegisterPage(),
         },

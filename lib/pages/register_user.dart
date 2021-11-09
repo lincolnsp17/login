@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
+import 'package:loginyou/pages/loginPage.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -7,11 +8,30 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+    final passwordconfirmController = TextEditingController();
+
     final authService = Provider.of<AuthService>(context);
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },
+            );
+          },
+        ),
+      ),
       backgroundColor: Colors.deepPurple,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
@@ -20,9 +40,17 @@ class RegisterPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Divider(
-                height: 50,
+                height: 20,
               ),
-              Image.asset("images/muscle.png", width: 300, height: 200),
+              Text(
+                'Crie sua conta',
+                style: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                    color: Colors.white),
+              ),
+              Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
               TextFormField(
                 validator: (value) {
                   RegExp regex = new RegExp(
@@ -47,7 +75,7 @@ class RegisterPage extends StatelessWidget {
                 validator: (value) {
                   RegExp regex = new RegExp(r'^.{6,}$');
                   if (value!.isEmpty) {
-                    return ('"preencha a senha');
+                    return ('preencha a senha');
                   }
                 },
                 controller: passwordController,
@@ -60,6 +88,30 @@ class RegisterPage extends StatelessWidget {
                     prefixIcon: Icon(Icons.shield),
                     hintText: ('******'),
                     labelStyle: TextStyle(color: Colors.white)),
+              ),
+              Divider(),
+              TextFormField(
+                validator: (value) {
+                  RegExp regex = new RegExp(r'^.{6,}$');
+                  if (value!.isEmpty) {
+                    return ('preencha a senha');
+                  }
+                },
+                controller: passwordconfirmController,
+                autofocus: true,
+                obscureText: true,
+                keyboardType: TextInputType.emailAddress,
+                style: TextStyle(color: Colors.white, fontSize: 16),
+                decoration: InputDecoration(
+                    labelText: "Corfirme a senha:",
+                    prefixIcon: Icon(Icons.shield),
+                    hintText: ('******'),
+                    labelStyle: TextStyle(color: Colors.white)),
+              ),
+              buildTextFormField(
+                "Email teste",
+                emailController,
+                "usuario@imodulo.com",
               ),
               ElevatedButton(
                 onPressed: () async {
@@ -81,4 +133,25 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget buildTextFormField(
+  String label,
+  TextEditingController c,
+  String hintText,
+  String icone,
+) {
+  return TextFormField(
+    controller: c,
+    autofocus: true,
+    obscureText: true,
+    keyboardType: TextInputType.emailAddress,
+    style: TextStyle(color: Colors.white, fontSize: 16),
+    decoration: InputDecoration(
+      labelText: label,
+      prefixIcon: Icon(Icons.icone),
+      hintText: hintText,
+      labelStyle: TextStyle(color: Colors.white),
+    ),
+  );
 }
