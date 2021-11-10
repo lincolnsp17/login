@@ -11,6 +11,7 @@ class RegisterPage extends StatelessWidget {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
     final passwordconfirmController = TextEditingController();
+    final nameController = TextEditingController();
 
     final authService = Provider.of<AuthService>(context);
 
@@ -50,8 +51,66 @@ class RegisterPage extends StatelessWidget {
                     fontSize: 40,
                     color: Colors.white),
               ),
+              Divider(),
               Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
-              TextFormField(
+              buildTextFormField("Nome:", nameController, "Fortin do bairro",
+                  IconData(983150, fontFamily: 'MaterialIcons')),
+              Divider(),
+              buildTextFormField(
+                  "Email:",
+                  emailController,
+                  "usuario@imodulo.com",
+                  IconData(57898, fontFamily: 'MaterialIcons')),
+              Divider(),
+              buildTextFormField("Senha:", passwordController, "********",
+                  IconData(58774, fontFamily: 'MaterialIcons')),
+              Divider(),
+              buildTextFormField("Confirme a senha:", passwordconfirmController,
+                  "********", IconData(58774, fontFamily: 'MaterialIcons')),
+              Divider(),
+              Divider(),
+              ElevatedButton(
+                onPressed: () async {
+                  /*if(){}*/
+                  await authService.createUserWithEmailAndPassword(
+                    emailController.text,
+                    passwordController.text,
+                  );
+                  Navigator.pop(context);
+                },
+                child: Text('Cadastrar-se'),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.red),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Widget buildTextFormField(
+  String label,
+  TextEditingController c,
+  String hintText,
+  IconData icone,
+) {
+  return TextFormField(
+    controller: c,
+    keyboardType: TextInputType.emailAddress,
+    style: TextStyle(color: Colors.white, fontSize: 16),
+    decoration: InputDecoration(
+      labelText: label,
+      prefixIcon: Icon(icone),
+      hintText: hintText,
+      labelStyle: TextStyle(color: Colors.white),
+    ),
+  );
+}
+
+/* TextFormField(
                 validator: (value) {
                   RegExp regex = new RegExp(
                       '/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})/i');
@@ -108,50 +167,4 @@ class RegisterPage extends StatelessWidget {
                     hintText: ('******'),
                     labelStyle: TextStyle(color: Colors.white)),
               ),
-              buildTextFormField(
-                "Email teste",
-                emailController,
-                "usuario@imodulo.com",
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  /*if(){}*/
-                  await authService.createUserWithEmailAndPassword(
-                    emailController.text,
-                    passwordController.text,
-                  );
-                  Navigator.pop(context);
-                },
-                child: Text('Cadastrar'),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-Widget buildTextFormField(
-  String label,
-  TextEditingController c,
-  String hintText,
-  String icone,
-) {
-  return TextFormField(
-    controller: c,
-    autofocus: true,
-    obscureText: true,
-    keyboardType: TextInputType.emailAddress,
-    style: TextStyle(color: Colors.white, fontSize: 16),
-    decoration: InputDecoration(
-      labelText: label,
-      prefixIcon: Icon(Icons.icone),
-      hintText: hintText,
-      labelStyle: TextStyle(color: Colors.white),
-    ),
-  );
-}
+              */
