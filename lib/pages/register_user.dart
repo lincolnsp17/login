@@ -13,6 +13,14 @@ class RegisterPage extends StatelessWidget {
     final passwordconfirmController = TextEditingController();
     final nameController = TextEditingController();
 
+    bool verificacao = false;
+    void clean() {
+      if (nameController.value.text.isEmpty ||
+          emailController.value.text.isEmpty ||
+          passwordController.value.text.isEmpty ||
+          passwordconfirmController.value.text.isEmpty) {}
+    }
+
     final authService = Provider.of<AuthService>(context);
 
     return Scaffold(
@@ -71,12 +79,24 @@ class RegisterPage extends StatelessWidget {
               Divider(),
               ElevatedButton(
                 onPressed: () async {
-                  /*if(){}*/
-                  await authService.createUserWithEmailAndPassword(
-                    emailController.text,
-                    passwordController.text,
-                  );
-                  Navigator.pop(context);
+                  if (nameController.value.text.isEmpty ||
+                      emailController.value.text.isEmpty) {
+                    tooltip:
+                    'Show Snackbar';
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Email vazio ou Nome invalido')));
+                  } else if (passwordController.value.text ==
+                      passwordconfirmController.value.text) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Confirmação de senha errada')));
+                  } else {
+                    await authService.createUserWithEmailAndPassword(
+                      emailController.text,
+                      passwordController.text,
+                      null,
+                    );
+                    Navigator.pop(context);
+                  }
                 },
                 child: Text('Cadastrar-se'),
                 style: ButtonStyle(

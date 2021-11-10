@@ -32,17 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 color: Colors.transparent,
               ),
-              Card(
-                color: Colors.grey,
-                child: Image.asset("images/logohiper.png",
-                    width: 300, height: 200),
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(10),
-                        topRight: Radius.circular(10)),
-                    side: BorderSide(width: 5, color: Colors.green)),
-              ),
+              Image.asset("images/logohiper.png", width: 300, height: 200),
               TextField(
                 controller: emailController,
                 //autofocus: true,
@@ -67,12 +57,6 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: Icon(Icons.shield),
                     hintText: ('******'),
                     labelStyle: TextStyle(color: Colors.black)),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* Required";
-                  } else
-                    return null;
-                },
               ),
               Container(
                 height: 40,
