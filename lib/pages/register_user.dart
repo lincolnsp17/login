@@ -41,7 +41,7 @@ class RegisterPage extends StatelessWidget {
           },
         ),
       ),
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
         child: Center(
@@ -61,40 +61,57 @@ class RegisterPage extends StatelessWidget {
               ),
               Divider(),
               Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
-              buildTextFormField("Nome:", nameController, "Fortin do bairro",
-                  IconData(983150, fontFamily: 'MaterialIcons')),
+              //WIDGET ABSTRATO PARA CONTRUIR OS BOTÕES
+              buildTextFormField(
+                TextInputType.emailAddress,
+                "Nome:",
+                nameController,
+                "Fortin do bairro",
+                IconData(983150, fontFamily: 'MaterialIcons'),
+                false,
+              ),
               Divider(),
               buildTextFormField(
-                  "Email:",
-                  emailController,
-                  "usuario@imodulo.com",
-                  IconData(57898, fontFamily: 'MaterialIcons')),
+                TextInputType.emailAddress,
+                "Email:",
+                emailController,
+                "usuario@imodulo.com",
+                IconData(57898, fontFamily: 'MaterialIcons'),
+                false,
+              ),
               Divider(),
-              buildTextFormField("Senha:", passwordController, "********",
-                  IconData(58774, fontFamily: 'MaterialIcons')),
+              buildTextFormField(
+                TextInputType.visiblePassword,
+                "Senha:",
+                passwordController,
+                "********",
+                IconData(58774, fontFamily: 'MaterialIcons'),
+                true,
+              ),
               Divider(),
-              buildTextFormField("Confirme a senha:", passwordconfirmController,
-                  "********", IconData(58774, fontFamily: 'MaterialIcons')),
+              buildTextFormField(
+                TextInputType.emailAddress,
+                "Confirme a senha:",
+                passwordconfirmController,
+                "********",
+                IconData(58774, fontFamily: 'MaterialIcons'),
+                true,
+              ),
               Divider(),
               Divider(),
               ElevatedButton(
                 onPressed: () async {
                   if (nameController.value.text.isEmpty ||
                       emailController.value.text.isEmpty) {
-                    tooltip:
-                    'Show Snackbar';
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('Email vazio ou Nome invalido')));
-                  } else if (passwordController.value.text ==
+                  } else if (passwordController.value.text !=
                       passwordconfirmController.value.text) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('Confirmação de senha errada')));
                   } else {
                     await authService.createUserWithEmailAndPassword(
-                      emailController.text,
-                      passwordController.text,
-                      null,
-                    );
+                        emailController.text, passwordController.text, null);
                     Navigator.pop(context);
                   }
                 },
@@ -112,18 +129,21 @@ class RegisterPage extends StatelessWidget {
 }
 
 Widget buildTextFormField(
+  TextInputType type,
   String label,
   TextEditingController c,
   String hintText,
   IconData icone,
+  obscure,
 ) {
   return TextFormField(
     controller: c,
-    keyboardType: TextInputType.emailAddress,
+    keyboardType: type,
+    obscureText: obscure,
     style: TextStyle(color: Colors.white, fontSize: 16),
     decoration: InputDecoration(
       labelText: label,
-      prefixIcon: Icon(icone),
+      prefixIcon: Icon(icone, color: Colors.white),
       hintText: hintText,
       labelStyle: TextStyle(color: Colors.white),
     ),

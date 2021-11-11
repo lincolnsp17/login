@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -22,5 +23,13 @@ class _HomePageState extends State<HomePage> {
         child: Text('Logout'),
       ),
     ));
+  }
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
+  void inputData() {
+    final User? user = auth.currentUser;
+    final uid = user!.uid;
+    print(uid);
   }
 }
