@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
+import 'package:loginyou/pages/loginPage.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,6 +20,10 @@ class _HomePageState extends State<HomePage> {
       child: ElevatedButton(
         onPressed: () async {
           await authService.signOut();
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => LoginPage()));
         },
         child: Text('Logout'),
       ),

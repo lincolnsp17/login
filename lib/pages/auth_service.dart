@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:flutter/src/widgets/navigator.dart';
 import 'package:loginyou/pages/user_model.dart';
 
 class AuthService {

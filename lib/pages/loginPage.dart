@@ -86,6 +86,10 @@ class _LoginPageState extends State<LoginPage> {
                     emailController.text,
                     passwordController.text,
                   );
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => HomePage()));
                 },
                 child: Text('Entrar'),
                 style: ButtonStyle(
