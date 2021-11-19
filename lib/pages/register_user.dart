@@ -41,25 +41,23 @@ class RegisterPage extends StatelessWidget {
           },
         ),
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF161920),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Divider(
-                height: 20,
+                height: 100,
               ),
               Text(
-                'Crie sua conta',
+                'Registrar-se',
                 style: TextStyle(
-                    fontFamily: 'OpenSans',
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w900,
                     fontSize: 40,
                     color: Colors.white),
               ),
-              Divider(),
               Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
               //WIDGET ABSTRATO PARA CONTRUIR OS BOTÕES
               buildTextFormField(
@@ -70,7 +68,6 @@ class RegisterPage extends StatelessWidget {
                 IconData(983150, fontFamily: 'MaterialIcons'),
                 false,
               ),
-              Divider(),
               buildTextFormField(
                 TextInputType.emailAddress,
                 "Email:",
@@ -79,7 +76,6 @@ class RegisterPage extends StatelessWidget {
                 IconData(57898, fontFamily: 'MaterialIcons'),
                 false,
               ),
-              Divider(),
               buildTextFormField(
                 TextInputType.visiblePassword,
                 "Senha:",
@@ -88,7 +84,6 @@ class RegisterPage extends StatelessWidget {
                 IconData(58774, fontFamily: 'MaterialIcons'),
                 true,
               ),
-              Divider(),
               buildTextFormField(
                 TextInputType.emailAddress,
                 "Confirme a senha:",
@@ -97,9 +92,16 @@ class RegisterPage extends StatelessWidget {
                 IconData(58774, fontFamily: 'MaterialIcons'),
                 true,
               ),
-              Divider(),
-              Divider(),
+              Divider(
+                height: 100,
+              ),
+
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(200, 60),
+                  primary: (Color(0xFF3D59C9)),
+                  shadowColor: Colors.teal,
+                ),
                 onPressed: () async {
                   if (nameController.value.text.isEmpty ||
                       emailController.value.text.isEmpty) {
@@ -116,9 +118,6 @@ class RegisterPage extends StatelessWidget {
                   }
                 },
                 child: Text('Cadastrar-se'),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
               ),
             ],
           ),
@@ -136,17 +135,27 @@ Widget buildTextFormField(
   IconData icone,
   obscure,
 ) {
-  return TextFormField(
-    controller: c,
-    keyboardType: type,
-    obscureText: obscure,
-    style: TextStyle(color: Colors.white, fontSize: 16),
-    decoration: InputDecoration(
-      labelText: label,
-      prefixIcon: Icon(icone, color: Colors.white),
-      hintText: hintText,
-      labelStyle: TextStyle(color: Colors.white),
-    ),
+  return Column(
+    children: [
+      Divider(
+        height: 25,
+      ),
+      TextFormField(
+        controller: c,
+        keyboardType: type,
+        obscureText: obscure,
+        style: TextStyle(color: Colors.white, fontSize: 16),
+        decoration: InputDecoration(
+          enabledBorder: const OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.white, width: 0.5),
+          ),
+          labelText: label,
+          prefixIcon: Icon(icone, color: Colors.white),
+          hintText: hintText,
+          labelStyle: TextStyle(color: Colors.white),
+        ),
+      ),
+    ],
   );
 }
 

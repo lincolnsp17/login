@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
-import 'package:loginyou/pages/home_screen.dart';
+import 'package:loginyou/pages/HomePage.dart';
 import 'package:loginyou/pages/loginPage.dart';
 import 'package:provider/provider.dart';
 import 'package:loginyou/pages/user_model.dart';

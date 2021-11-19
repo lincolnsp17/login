@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:loginyou/pages/auth_service.dart';
-import 'package:loginyou/pages/home_screen.dart';
+import 'package:loginyou/pages/HomePage.dart';
 import 'package:loginyou/pages/resetPassword.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 10.0),
+                    padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
                       "Login",
                       style: TextStyle(
