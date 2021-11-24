@@ -1,4 +1,3 @@
-// ignore: file_names
 // ignore_for_file: camel_case_types, prefer_const_constructors, file_names
 
 import 'package:flutter/material.dart';
@@ -12,6 +11,8 @@ class multOne extends StatefulWidget {
 }
 
 class _multOneState extends State<multOne> {
+  bool _CardIndex = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,39 +40,72 @@ class _multOneState extends State<multOne> {
                 Colors.black.withOpacity(0.4), BlendMode.dstATop),
           ),
         ),
-        child: Container(
-          color: Colors.transparent,
-          child: Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(26.0),
-                child: Card(
-                  color: Colors.transparent,
-                  child: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Image.asset(
-                      'images/woman.png',
-                      width: 150,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                GestureDetector(
+                  child: Card(
+                    color: ((_CardIndex == true) ? Colors.blue : Colors.white),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: 16.0, bottom: 16.0, left: 16.0, right: 16.0),
+                      child: Image.asset(
+                        'images/woman.png',
+                        width: ((_CardIndex == true) ? 140 : 110), //140
+                      ),
                     ),
                   ),
+                  onTap: () {
+                    setState(() {
+                      if (_CardIndex = !_CardIndex) {
+                        print("$_CardIndex");
+                        _CardIndex == true;
+                      }
+                    });
+                  },
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Card(
-                  color: Colors.white,
-                  child: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Image.asset(
-                      'images/men.png',
-                      width: 160,
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: 0.0, bottom: 0.0, left: 10.0, right: 0.0),
+                  child: GestureDetector(
+                    child: Card(
+                      color:
+                          ((_CardIndex == false) ? Colors.blue : Colors.white),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 16.0, bottom: 16.0, left: 10.0, right: 16.0),
+                        child: Image.asset(
+                          'images/testemen.png',
+                          width: ((_CardIndex == false) ? 160 : 130), //160
+                        ),
+                      ),
                     ),
+                    onTap: () {
+                      setState(() {
+                        if (_CardIndex = !_CardIndex) {
+                          print("$_CardIndex");
+                          _CardIndex == false;
+                        }
+                        ;
+                      });
+                    },
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.transparent,
+        child: Text(
+          ">",
+        ),
+        onPressed: () {
+          // Add your onPressed code here!
+        },
       ),
     );
   }
