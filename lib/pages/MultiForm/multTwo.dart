@@ -1,4 +1,7 @@
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, annotate_overrides, override_on_non_overriding_member, camel_case_types, file_names
+
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class multTwo extends StatefulWidget {
   const multTwo({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class multTwo extends StatefulWidget {
 
 class _multTwoState extends State<multTwo> {
   @override
+  double _value = 4.0;
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -32,7 +36,7 @@ class _multTwoState extends State<multTwo> {
             image: AssetImage('images/fundo.jpeg'),
             fit: BoxFit.cover,
             colorFilter: new ColorFilter.mode(
-                Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                Colors.white.withOpacity(0.4), BlendMode.dstATop),
           ),
         ),
         child: Column(
@@ -40,8 +44,19 @@ class _multTwoState extends State<multTwo> {
           children: [
             Container(),
             Container(
-              child: Text('sla',
-                  style: TextStyle(color: Colors.white, fontSize: 25)),
+              child: SfSlider(
+                min: 0.0,
+                max: 10.0,
+                interval: 2,
+                showTicks: true,
+                showLabels: true,
+                value: _value,
+                onChanged: (dynamic newValue) {
+                  setState(() {
+                    _value = newValue;
+                  });
+                },
+              ),
             ),
             Container(),
             Container(),
@@ -50,4 +65,6 @@ class _multTwoState extends State<multTwo> {
       ),
     );
   }
+
+  NumberFormat(String s) {}
 }

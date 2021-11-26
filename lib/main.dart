@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         title: 'Login teste',
         initialRoute: '/',
         routes: {
-          '/': (context) => multOne(),
+          '/': (context) => multTwo(),
           '/login': (context) => Wrapper(),
           '/register': (context) => RegisterPage(),
         },
