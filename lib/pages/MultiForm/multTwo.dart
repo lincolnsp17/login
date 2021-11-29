@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
+import 'package:height_slider/height_slider.dart';
 
 class multTwo extends StatefulWidget {
   const multTwo({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class _multTwoState extends State<multTwo> {
   @override
   double _value = 4.0;
   Widget build(BuildContext context) {
+    int height = 200;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
@@ -43,22 +45,19 @@ class _multTwoState extends State<multTwo> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(),
-            Container(
-              child: SfSlider(
-                min: 0.0,
-                max: 10.0,
-                interval: 2,
-                showTicks: true,
-                showLabels: true,
-                value: _value,
-                onChanged: (dynamic newValue) {
-                  setState(() {
-                    _value = newValue;
-                  });
-                },
-              ),
+            SfSlider.vertical(
+              min: 2.0,
+              max: 200.0,
+              interval: 1,
+              showTicks: true,
+              showLabels: true,
+              value: _value,
+              onChanged: (dynamic newValue) {
+                setState(() {
+                  _value = newValue;
+                });
+              },
             ),
-            Container(),
             Container(),
           ],
         ),

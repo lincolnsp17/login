@@ -36,11 +36,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   ruler_picker: ^0.1.1
-  flutter_svg: ^0.23.0+1
   html: ^0.15.0
   http: ^0.13.4
   numberpicker: ^2.1.1
   syncfusion_flutter_sliders: ^19.3.55
+  height_slider: ^1.4.0-nullsafety+1
   
 
 dev_dependencies:
