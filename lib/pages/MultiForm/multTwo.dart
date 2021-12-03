@@ -45,12 +45,15 @@ class _multTwoState extends State<multTwo> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(),
-            SfSlider.vertical(
-              min: 2.0,
-              max: 200.0,
-              interval: 1,
-              showTicks: true,
+            SfSlider(
+              min: 0.0,
+              max: 10.0,
+              interval: 2,
+              numberFormat: NumberFormat('\$'),
+              activeLabelStyle: TextStyle(
+                  color: Colors.red, fontSize: 12, fontStyle: FontStyle.italic),
               showLabels: true,
+              showTicks: true,
               value: _value,
               onChanged: (dynamic newValue) {
                 setState(() {
