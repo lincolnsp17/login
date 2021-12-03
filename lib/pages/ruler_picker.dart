@@ -158,7 +158,7 @@ class RulerPickerState extends State<RulerPicker> {
                         children: <Widget>[
                           Container(
                             width: index % 10 == 0 ? 2 : 1,
-                            height: index % 10 == 0 ? 32 : 20,
+                            height: 20 % 10 == 0 ? 32 : 20,
                             color: Color.fromARGB(255, 188, 194, 203),
                           ),
                           Positioned(

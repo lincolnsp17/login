@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         title: 'Login teste',
         initialRoute: '/',
         routes: {
-          '/': (context) => multThree(),
+          '/': (context) => multTwo(),
           '/login': (context) => Wrapper(),
           '/register': (context) => RegisterPage(),
         },

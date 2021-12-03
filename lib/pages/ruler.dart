@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late RulerPickerController _rulerPickerController;
   late TextEditingController _textEditingController;
   num showValue = 0;
-  int fractionDigits = 1;
+  int fractionDigits = 0;
   @override
   void initState() {
     super.initState();
@@ -52,6 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
               onValueChange: (value) {
                 print(value);
                 setState(() {
+                  Text("1,");
+
                   _textEditingController.text = value.toString();
                 });
               },
@@ -67,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (value) {
                   showValue = num.parse(
                       num.parse(value).toStringAsFixed(fractionDigits));
+                  Text("1,");
                 },
                 onEditingComplete: () {
                   _rulerPickerController.value = showValue;

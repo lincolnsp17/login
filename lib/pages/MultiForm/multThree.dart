@@ -30,18 +30,20 @@ class _multThreeState extends State<multThree> {
         appBar: AppBar(
           title: Text('texto'),
         ),
-        body: Center(
-          child: SfSlider.vertical(
+        body: Container(
+          width: 500,
+          child: SfSlider(
             min: 40.0,
-            max: 100.0,
-            interval: 1,
+            max: 90.0,
+            interval: 10,
             showTicks: true,
             showLabels: true,
+            minorTicksPerInterval: 10,
             labelFormatterCallback:
                 (dynamic actualValue, String formattedText) {
               return actualValue == 10000
-                  ? '1, $formattedText cm'
-                  : '\1,$formattedText cm';
+                  ? '1, $formattedText m'
+                  : '\1,$formattedText m';
             },
             value: _value,
             onChanged: (dynamic newValue) {
